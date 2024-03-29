@@ -31,7 +31,7 @@ public class JSUtils {
     }
 
     //Scrolling all the way down
-    public static void scrollDownByJS() {
+    public static void scrollDownByJS(WebElement emailSMSsection) {
         JavascriptExecutor jsexecutor = ((JavascriptExecutor) Driver.getDriver());
         jsexecutor.executeScript("window.scrollTo(0,document.body.scrollHeight)");
     }

@@ -1,12 +1,8 @@
 package enums;
 
 public enum URL_LINKS {
-    HOMEPAGE("https://test.urbanicfarm.com/"),
-    LOGIN_URL("https://test.urbanicfarm.com/auth/login"),
-    CONTACTUSPAGE_URL("https://test.urbanicfarm.com/api/public/contact"),
-    BASEPAGELOGIN_URL("https://urbanicfarm.com/auth/login"),
-    ADDADDRESSPAGE_URL("https://test.urbanicfarm.com/api/account/address/addAddress"),
-    CANLILOGINAPIURL("https://urbanicfarm.com/api/public/login");
+    HOMEPAGE("https://test.hypnotes.net/"),
+    LOGIN_URL("https://test.hypnotes.net/login");
 
     private final String getLink;
 
@@ -18,4 +14,5 @@ public enum URL_LINKS {
 
         return getLink;
     }
+
 }

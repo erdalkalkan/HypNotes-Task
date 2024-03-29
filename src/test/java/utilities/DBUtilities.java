@@ -1,9 +1,5 @@
 package utilities;
 
-
-import pojo.PPromoCode;
-import pojo.User;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -174,28 +170,28 @@ public class DBUtilities {
     }
 
     //promo Code listesini okumak için kullanabilirsiniz, List<PPromoCode> bir liste dönecek
-    public static List<PPromoCode> getPromoCodeList_pojo() throws SQLException {
-
-        statement = connection.createStatement();
-        resultSet = statement.executeQuery("select * from promo_code;");
-
-        List<PPromoCode> list = new ArrayList<>();
-
-        while (resultSet.next()) {
-
-            PPromoCode promoCode = new PPromoCode(
-                    resultSet.getInt("id"),
-                    resultSet.getString("code"),
-                    resultSet.getString("starts_at"),
-                    resultSet.getString("ends_at"),
-                    resultSet.getInt("number_of_users"),
-                    resultSet.getInt("discount"),
-                    resultSet.getString("discount_type")
-            );
-            list.add(promoCode);
-        }
-        return list;
-    }
+//    public static List<PPromoCode> getPromoCodeList_pojo() throws SQLException {
+//
+//        statement = connection.createStatement();
+//        resultSet = statement.executeQuery("select * from promo_code;");
+//
+//        List<PPromoCode> list = new ArrayList<>();
+//
+//        while (resultSet.next()) {
+//
+//            PPromoCode promoCode = new PPromoCode(
+//                    resultSet.getInt("id"),
+//                    resultSet.getString("code"),
+//                    resultSet.getString("starts_at"),
+//                    resultSet.getString("ends_at"),
+//                    resultSet.getInt("number_of_users"),
+//                    resultSet.getInt("discount"),
+//                    resultSet.getString("discount_type")
+//            );
+//            list.add(promoCode);
+//        }
+//        return list;
+//    }
 
 
     public static void createUser(int allow_anonymous_chat, int browser_notifications,int is_verified,
@@ -211,30 +207,30 @@ public class DBUtilities {
 
 
     //user listesini okumak için kullanabilirsiniz, List<User> bir liste dönecek
-    public static List<User> getUserList_pojo() throws SQLException {
-
-        statement = connection.createStatement();
-        resultSet = statement.executeQuery("select * from user;");
-
-        List<User> list = new ArrayList<>();
-
-        while (resultSet.next()) {
-
-            User user=new User(
-                   resultSet.getInt("allow_anonymous_chat"),
-                   resultSet.getInt("browser_notifications"),
-                    resultSet.getInt("is_verified"),
-                    resultSet.getString("delivery_type"),
-                    resultSet.getString("email"),
-                    resultSet.getString("first_name"),
-                    resultSet.getString("password"),
-                    resultSet.getString("roles")
-
-
-            );
-            list.add(user);
-        }
-        return list;
-    }
+//    public static List<User> getUserList_pojo() throws SQLException {
+//
+//        statement = connection.createStatement();
+//        resultSet = statement.executeQuery("select * from user;");
+//
+//        List<User> list = new ArrayList<>();
+//
+//        while (resultSet.next()) {
+//
+//            User user=new User(
+//                   resultSet.getInt("allow_anonymous_chat"),
+//                   resultSet.getInt("browser_notifications"),
+//                    resultSet.getInt("is_verified"),
+//                    resultSet.getString("delivery_type"),
+//                    resultSet.getString("email"),
+//                    resultSet.getString("first_name"),
+//                    resultSet.getString("password"),
+//                    resultSet.getString("roles")
+//
+//
+//            );
+//            list.add(user);
+//        }
+//        return list;
+//    }
 
 }

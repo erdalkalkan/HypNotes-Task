@@ -156,27 +156,9 @@ public class Hooks extends CommonPage {
         return token;
     }
 
-    @Before("@user3token")
-    public void user3Token() {
-        getToken(USER3);
-    }
 
-    @Before("@userVedatToken")
-    public void userVedatToken() {
-        getToken(USERVEDAT);
-    }
-      
-    @Before("@user5token")
-    public void user5Token() {
-        getToken(USER5);
-    }
-
-    @Before("@tokencanli")
-    public void tokenCanli() {
-        getToken(USERCREDENTIAL.USERBASEWEBSITE,URL_LINKS.CANLILOGINAPIURL);
-    }
     @Before("@userUrbanic2Token")
     public void userUrbanic2Token() {
-        getToken(USER2);
+        getToken(TR2);
     }
 }
