@@ -143,7 +143,6 @@ public class EmailSMSPage extends CommonPage {
             deleteBtn.getFirst().click();
             ReusableMethods.waitForVisibility(deleteYesBtn, 3);
             deleteYesBtn.click();
-            System.out.println("döngü sayısı= "+i);
         }
         Assert.assertTrue("No Data görünmedi", noData.isDisplayed());
     }
