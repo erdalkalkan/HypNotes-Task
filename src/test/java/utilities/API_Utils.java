@@ -32,21 +32,12 @@ public class API_Utils {
     public static RequestSpecification preSetUp(USERCREDENTIAL usercredential) {
         requestSpecification = RestAssured.given();
         requestSpecification.contentType(ContentType.JSON);
-        requestSpecification.baseUri("https://test.urbanicfarm.com");
-        requestSpecification.basePath("/api");
+        requestSpecification.baseUri("https://test.hypnotes.net/");
+        requestSpecification.basePath("api/");
 
-        Map<String, String> map = new HashMap<>();
-        map.put("email", usercredential.getUsername());
-        map.put("password", usercredential.getPassword());
-
-        response = given()
-                .contentType(ContentType.JSON)
-                .body(map)
-                .when()
-                .post("https://test.urbanicfarm.com/api/public/login");
-
-        token = response.jsonPath().getString("token");
-        requestSpecification.auth().oauth2(token);
+        token = getToken(usercredential);
+        requestSpecification.header("cookie",token);
+        requestSpecification.header("content-type", "application/x-www-form-urlencoded");
 
        return requestSpecification;
 
@@ -62,5 +53,21 @@ public class API_Utils {
        return responseSpecification;
     }
 
+    public static String getToken(USERCREDENTIAL userinfo) {
+        Map<String, String> res = new HashMap<>();
+        response = given()
+                .header("content-type", "application/x-www-form-urlencoded")
+                .body("{\"username\":\"" + userinfo.getUsername() + "\",\"password\":\"" + userinfo.getPassword() + "\"}")
+                .post("https://test.hypnotes.net/api/login");
+
+        res.put("csrfToken", response.getCookie("csrfToken"));
+        res.put("PHPSESSID", response.getCookie("PHPSESSID"));
+        String csrfToken = "csrfToken="+res.get("csrfToken")+";";
+        String PHPSESSID = "PHPSESSID="+res.get("PHPSESSID")+";";
+        token= csrfToken+PHPSESSID;
+
+        return token;
+
+    }
 
 }
