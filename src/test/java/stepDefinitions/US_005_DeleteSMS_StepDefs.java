@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pages.CommonPage;
 
@@ -14,4 +15,5 @@ public class US_005_DeleteSMS_StepDefs extends CommonPage {
     public void userShouldBeAbleToDeleteAllSavedSMS() {
         getEmailSMSPage().deleteAllSavedSMS();
     }
+
 }
