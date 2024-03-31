@@ -13,19 +13,19 @@ import static utilities.ReusableMethods.*;
 public class LoginPage extends CommonPage {
 
     @FindBy(css = "[data-test-id='loginAsClientPage_email']")
-    public WebElement emailInput;
+    private WebElement emailInput;
 
     @FindBy(css = "[data-test-id='loginAsClientPage_password']")
-    public WebElement passwordInput;
+    private WebElement passwordInput;
 
     @FindBy(css = "[data-test-id='loginAsClientPage_loginButton']")
-    public WebElement loginBtn;
+    private WebElement loginBtn;
 
     @FindBy(css = ".ant-btn-sm.ant-btn-background-ghost>span")
-    public WebElement timeZoneYesBtn;
+    private WebElement timeZoneYesBtn;
 
     @FindBy(xpath = "//strong[.='Online - Europe/Berlin']")
-    public WebElement timeZone;
+    private WebElement timeZone;
 
     //Enum classını yazarak credentiallerinle login olabilirsin
     public void login(USERCREDENTIAL usercredential) {
