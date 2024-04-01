@@ -13,31 +13,31 @@ import static stepDefinitions.Hooks.driver;
 public class EmailSMSPage extends CommonPage {
 
     @FindBy(css = "#basic_message")
-    public WebElement msjBox;
+    private WebElement msjBox;
     @FindBy(css = "#basic_clients")
-    public WebElement selectClientBox;
+    private WebElement selectClientBox;
     @FindBy(xpath = "//p[.='erdal@yopmail.com']")
-    public WebElement selectErdalEmail;
+    private WebElement selectErdalEmail;
     @FindBy(css = "[type='submit']")
-    public WebElement sendSMSBtn;
+    private WebElement sendSMSBtn;
     @FindBy(xpath = "//span[contains(text(),'successfully')]")
-    public WebElement successMsj;
+    private WebElement successMsj;
     @FindBy(css = "#basic_checkAll")
-    public WebElement selectAllClients;
+    private WebElement selectAllClients;
     @FindBy(css = ".ant-checkbox.css-aqx16b")
-    public WebElement selectTestSMSCheckBox;
+    private WebElement selectTestSMSCheckBox;
     @FindBy(css = "[type='tel']")
-    public WebElement telInput;
+    private WebElement telInput;
     @FindBy(xpath = "//div[.='Please Select Client']")
-    public WebElement withoutSelectClient;
+    private WebElement withoutSelectClient;
     @FindBy(xpath = "//button[.='Sent Sms-Box']")
-    public WebElement sendSMSBoxBtn;
+    private WebElement sendSMSBoxBtn;
     @FindBy(css = ".anticon-delete")
-    public List<WebElement> deleteBtn;
+    private List<WebElement> deleteBtn;
     @FindBy(css = "[class='ant-btn css-aqx16b ant-btn-primary ant-btn-sm']>span")
-    public WebElement deleteYesBtn;
+    private WebElement deleteYesBtn;
     @FindBy(xpath = "//div[.='No data']")
-    public WebElement noData;
+    private WebElement noData;
 
     //SMS gönderir
     //yazacağınız mesajı ve email adresini girmelisiniz

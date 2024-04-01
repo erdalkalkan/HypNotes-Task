@@ -31,7 +31,7 @@ public class API_Utils {
 
     public static RequestSpecification preSetUp(USERCREDENTIAL usercredential) {
         requestSpecification = RestAssured.given();
-        requestSpecification.contentType(ContentType.JSON);
+        //requestSpecification.contentType(ContentType.JSON);
         requestSpecification.baseUri("https://test.hypnotes.net/");
         requestSpecification.basePath("api/");
 
@@ -54,20 +54,17 @@ public class API_Utils {
     }
 
     public static String getToken(USERCREDENTIAL userinfo) {
-        Map<String, String> res = new HashMap<>();
+
         response = given()
                 .header("content-type", "application/x-www-form-urlencoded")
                 .body("{\"username\":\"" + userinfo.getUsername() + "\",\"password\":\"" + userinfo.getPassword() + "\"}")
                 .post("https://test.hypnotes.net/api/login");
 
-        res.put("csrfToken", response.getCookie("csrfToken"));
-        res.put("PHPSESSID", response.getCookie("PHPSESSID"));
-        String csrfToken = "csrfToken="+res.get("csrfToken")+";";
-        String PHPSESSID = "PHPSESSID="+res.get("PHPSESSID")+";";
+        String csrfToken = "csrfToken=" + response.getCookie("csrfToken") +";" ;
+        String PHPSESSID = "PHPSESSID=" + response.getCookie("PHPSESSID") +";" ;
         token= csrfToken+PHPSESSID;
 
         return token;
-
     }
 
 }
