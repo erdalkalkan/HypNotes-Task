@@ -28,7 +28,8 @@ public class LoginPage extends CommonPage {
     private WebElement timeZone;
 
     //Enum classını yazarak credentiallerinle login olabilirsin
-    public void login(USERCREDENTIAL usercredential) {
+    public void
+    login(USERCREDENTIAL usercredential) {
         driver.get(URL_LINKS.LOGIN_URL.getLink());
         waitForPageToLoad(5);
         emailInput.sendKeys(usercredential.getUsername());

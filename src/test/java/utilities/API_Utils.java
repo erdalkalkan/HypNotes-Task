@@ -67,4 +67,43 @@ public class API_Utils {
         return token;
     }
 
+    public static void locationChange() {
+        RequestSpecification requestSpecification = RestAssured.given();
+
+
+        Map<String, String> mapBody = new HashMap<>();
+        mapBody.put("username", USER_INFO.THERAPIST.getEmail());
+        mapBody.put("password", USER_INFO.THERAPIST.getPassword());
+
+        response = given()
+                .contentType(ContentType.JSON)
+                .body(mapBody)
+                .post("https://test.hypnotes.net/api/login");
+        PHPSESSID = response.cookies().get("PHPSESSID");
+
+        requestSpecification.header("content-type", "application/x-www-form-urlencoded");
+        requestSpecification.header("cookie", "cookie", "PHPSESSID=" + PHPSESSID);
+        requestSpecification.baseUri("https://test.hypnotes.net/api");
+
+        response = given()
+                .spec(requestSpecification)
+                .body("timezone: Asia/Baku")//her kes Kendi location-nu eklemeli
+                .post("/dashboard/getUser");
+        response.prettyPrint();
+
+    }
+
+    public static void locationChangeDeneme2(USERCREDENTIAL usercredential) {
+
+        String token1 = getToken(usercredential);
+
+        response = given()
+                .header("content-type", "application/x-www-form-urlencoded")
+                .header("cookie", token1)
+                .body("timezone: Europe/Berlin")                         //her kes Kendi location-nu eklemeli Europe/Berlin
+                .post("https://test.hypnotes.net/api/dashboard/getUser");
+        response.prettyPrint();
+
+    }
+
 }
