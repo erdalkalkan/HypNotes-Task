@@ -13,7 +13,11 @@ import static stepDefinitions.Hooks.driver;
 public class EmailSMSPage extends CommonPage {
 
     @FindBy(css = "#basic_message")
+    private WebElement msjInputInSMSSection;
+    @FindBy(css = "#basic_message")
     private WebElement msjBox;
+    @FindBy(css = "#bulkMail_title")
+    private WebElement titleMsjInput;
     @FindBy(css = "#basic_clients")
     private WebElement selectClientBox;
     @FindBy(xpath = "//p[.='erdal@yopmail.com']")
@@ -42,8 +46,9 @@ public class EmailSMSPage extends CommonPage {
     //SMS gönderir
     //yazacağınız mesajı ve email adresini girmelisiniz
     public void sendSMS(String message, String email) {
-        ReusableMethods.scrollAndClickWithJS(msjBox);
-        msjBox.sendKeys(message);
+        ReusableMethods.waitForPageToLoad(5);
+        ReusableMethods.scrollAndClickWithJS(msjInputInSMSSection);
+        msjInputInSMSSection.sendKeys(message);
         ReusableMethods.waitForVisibility(sendSMSBtn, 3);
         JSUtils.scrollDownByJS(sendSMSBtn);
         selectClientBox.sendKeys(email);
@@ -71,9 +76,10 @@ public class EmailSMSPage extends CommonPage {
 
     //Tüm müşterilere SMS gönderir
     //yazacağınız mesajı ve telefon numarasını girmelisiniz
-    public void sendTestSMS(String message, String telNo) {
-        ReusableMethods.scrollAndClickWithJS(msjBox);
-        msjBox.sendKeys(message);
+    public void sendTestSMS(String sms, String telNo) {
+        ReusableMethods.waitForPageToLoad(5);
+        ReusableMethods.scrollAndClickWithJS(msjInputInSMSSection);
+        msjInputInSMSSection.sendKeys(sms);
         JSUtils.scrollDownByJS(sendSMSBtn);
         ReusableMethods.waitForVisibility(sendSMSBtn, 3);
         selectTestSMSCheckBox.click();
