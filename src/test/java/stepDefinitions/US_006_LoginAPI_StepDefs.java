@@ -6,8 +6,6 @@ import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import utilities.API_Utils;
 
-import java.util.Map;
-
 import static utilities.API_Utils.response;
 
 public class US_006_LoginAPI_StepDefs {

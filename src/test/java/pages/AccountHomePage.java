@@ -8,11 +8,12 @@ public class AccountHomePage extends CommonPage {
 
     @FindBy(css = "[href='/dashboard/email-sms']")
     public WebElement emailSMSsection;
-    @FindBy(css = "[title='SMS']")
+    @FindBy(xpath = "//label[@class='ant-segmented-item'][.='SMS']")
     public WebElement SMSsection;
 
     //istenilenbutona tıklama işlemi yapar
     public void cliclElement(WebElement webElement){
+        ReusableMethods.scrollToElement(webElement);
         ReusableMethods.waitForClickablility(webElement,10);
         webElement.click();
     }
